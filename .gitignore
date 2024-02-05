@@ -1,3 +1,8 @@
+# Custom
+dump/
+.vscode/
+*.exe
+
 # Prerequisites
 *.d
 
