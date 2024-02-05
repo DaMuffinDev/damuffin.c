@@ -11,6 +11,12 @@
 /* Enable macros for each type to check if it is defined using a macro */
 #define DAMUFFIN_CONFIG_TYPE_DIRECTIVES
 
+/* Enables macros for the malloc shorthands */
+#define DAMUFFIN_CONFIG_STDLIB_MALLOC_SHORTHANDS
+
+/* Enables macros for the calloc shorthands */
+#define DAMUFFIN_CONFIG_STDLIB_CALLOC_SHORTHANDS
+
 /* Allow the use of 128-bit integer types (i128, u128, f128) */
 #define DAMUFFIN_CONFIG_ALLOW_INT128
 

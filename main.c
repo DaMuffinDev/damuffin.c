@@ -4,6 +4,8 @@
 //#undef DAMUFFIN_CONFIG_TYPE_SHORTHANDS
 //#undef DAMUFFIN_CONFIG_MAIN_SHORTHANDS
 //#undef DAMUFFIN_CONFIG_TYPE_DIRECTIVES
+//#undef DAMUFFIN_CONFIG_STDLIB_MALLOC_SHORTHANDS
+//#undef DAMUFFIN_CONFIG_STDLIB_CALLOC_SHORTHANDS
 //#undef DAMUFFIN_CONFIG_ALLOW_INT128
 //#undef DAMUFFIN_CONFIG_ALLOW_CLEANUP
 
@@ -36,6 +38,24 @@ DEFAULT_MAIN {
 
     return 0;
 }
+*/
+
+/*
+typedef struct MyStruct { ... } MyStruct_t;
+
+'Malloc(MyStruct_t, 20)' translates to
+(MyStruct_t*)malloc(sizeof(MyStruct_t) * 20)
+
+'SingleMalloc(MyStruct_t)' tranlsates to
+(MyStruct_t*)malloc(sizeof(MyStruct_t))
+
+'VarMalloc(myVar, MyStruct_t, 20)' translates to
+MyStruct_t* myVar = (MyStruct_t*)malloc(sizeof(MyStruct_t) * 20)
+
+'SingleVarMalloc(myVar, MyStruct_t)' translates to
+MyStruct_t* myVar = (MyStruct_t*)malloc(sizeof(MyStruct_t))
+
+// You must end each macro with a `;` 
 */
 
 EMPTY_MAIN(0)
