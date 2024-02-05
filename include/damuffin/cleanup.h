@@ -6,4 +6,8 @@
 #undef _A
 #undef _T
 
+#undef L
+#undef S
+#undef U
+
 #endif//_DAMUFFIN_C_LIB_CLEANUP_H_
