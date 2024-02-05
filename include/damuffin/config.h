@@ -5,6 +5,9 @@
 /* Enable type shorthands for int, uint, and float */
 #define DAMUFFIN_CONFIG_TYPE_SHORTHANDS
 
+/* Allow the use of 128-bit integer types (i128, u128, f128) */
+#define DAMUFFIN_CONFIG_ALLOW_INT128
+
 /* Add cleanup import to #undef utility macros */
 #define DAMUFFIN_CONFIG_ALLOW_CLEANUP
 

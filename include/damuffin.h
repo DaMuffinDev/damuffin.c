@@ -18,6 +18,12 @@
 
     _T(float)   f32;
     _T(double)  f64;
+
+    #ifdef DAMUFFIN_CONFIG_ALLOW_INT128
+        _T(S int)    i128 _A(mode(TI));
+        _T(U int)    u128 _A(mode(TI));
+        _T(L double) f128;
+    #endif//DAMUFFIN_CONFIG_ALLOW_INT128
 #endif//DAMUFFIN_CONFIG_TYPE_SHORTHANDS
 
 #ifdef DAMUFFIN_CONFIG_ALLOW_CLEANUP
