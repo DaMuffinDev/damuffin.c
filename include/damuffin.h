@@ -47,6 +47,18 @@
     #endif//DAMUFFIN_CONFIG_ALLOW_INT128
 #endif//DAMUFFIN_CONFIG_TYPE_SHORTHANDS
 
+#ifdef DAMUFFIN_CONFIG_MAIN_SHORTHANDS
+    #ifdef DAMUFFIN_CONFIG_TYPE_SHORTHANDS
+        #define MAIN(a, b)       i32 main(i32 a, char* b[])
+        #define EMPTY_MAIN(code) i32 main() {return code;}
+        #define DEFAULT_MAIN     MAIN(argc, argv)
+    #else
+        #define MAIN(a, b)       int main(int a, char* b[])
+        #define EMPTY_MAIN(code) int main() {return code;}
+        #define DEFAULT_MAIN     MAIN(argc, argv)
+    #endif//DAMUFFIN_CONFIG_TYPE_SHORTHANDS
+#endif//DAMUFFIN_CONFIG_MAIN_SHORTHANDS
+
 #ifdef DAMUFFIN_CONFIG_ALLOW_CLEANUP
     #include <damuffin/cleanup.h>
 #endif//DAMUFFIN_CONFIG_ALLOW_CLEANUP

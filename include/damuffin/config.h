@@ -5,6 +5,9 @@
 /* Enable type shorthands for int, uint, and float */
 #define DAMUFFIN_CONFIG_TYPE_SHORTHANDS
 
+/* Enable macros for the main function shorthands */
+#define DAMUFFIN_CONFIG_MAIN_SHORTHANDS
+
 /* Enable macros for each type to check if it is defined using a macro */
 #define DAMUFFIN_CONFIG_TYPE_DIRECTIVES
 
