@@ -10,4 +10,11 @@
 #undef S
 #undef U
 
+#ifdef _DAMUFFIN_C_LIB_BROWSER_H_
+    #undef _B_HELPER_DETAIL_FACTORY
+    #undef _B_HELPER_DEFAULT
+    #undef _B_HELPER_PROFILE
+    #undef _B
+#endif//_DAMUFFIN_C_LIB_BROWSER_H_
+
 #endif//_DAMUFFIN_C_LIB_CLEANUP_H_
