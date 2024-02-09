@@ -1,4 +1,4 @@
-#include <damuffin/config.h>
+//#include <damuffin/config.h>
 
 /* Disabling certain configurations requires you to undefine any of the following macros */
 //#undef DAMUFFIN_CONFIG_TYPE_SHORTHANDS
@@ -9,7 +9,12 @@
 //#undef DAMUFFIN_CONFIG_ALLOW_INT128
 //#undef DAMUFFIN_CONFIG_ALLOW_CLEANUP
 
+#include <damuffin/strlib.h>
 #include <damuffin.h>
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
 /*
 'MAIN(argc, argv)' translates to
@@ -58,4 +63,18 @@ MyStruct_t* myVar = (MyStruct_t*)malloc(sizeof(MyStruct_t))
 // You must end each macro with a `;` 
 */
 
-EMPTY_MAIN(0)
+DEFAULT_MAIN {
+    string_t r = str_new("This is a sentence containing is. My is is not your is, y'know?");
+    string_t p = str_new("is");
+    string_t y = str_new("JESUS IS KING");
+    string_t x = str_replace(r, p, y, 10);
+
+    printf("%s\n", x.buffer);
+
+    str_free(r);
+    str_free(y);
+    str_free(x);
+    str_free(p);
+
+    return 0;
+}

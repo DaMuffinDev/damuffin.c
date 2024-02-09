@@ -18,6 +18,9 @@
     _T(float)   f32;
     _T(double)  f64;
 
+    _T(u64) size_t;
+    _T(i64) ssize_t;
+
     #ifdef DAMUFFIN_CONFIG_TYPE_DIRECTIVES
         #define i8  i8
         #define i16 i16
@@ -31,6 +34,9 @@
 
         #define f32 f32
         #define f64 f64
+
+        #define size_t  size_t
+        #define ssize_t ssize_t
     #endif//DAMUFFIN_CONFIG_TYPE_DIRECTIVES
 
     #ifdef DAMUFFIN_CONFIG_ALLOW_INT128
