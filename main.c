@@ -66,8 +66,8 @@ MyStruct_t* myVar = (MyStruct_t*)malloc(sizeof(MyStruct_t))
 DEFAULT_MAIN {
     string_t r = str_new("This is a sentence containing is. My is is not your is, y'know?");
     string_t p = str_new("is");
-    string_t y = str_new("JESUS IS KING");
-    string_t x = str_replace(r, p, y, 10);
+    string_t y = str_new("THIS ISLONG");
+    string_t x = str_replace(r, p, y, 2);
 
     printf("%s\n", x.buffer);
 

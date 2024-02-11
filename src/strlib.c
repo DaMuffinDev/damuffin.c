@@ -241,84 +241,48 @@ string_t str_replace(string_t _Str, string_t _Old, string_t _New, size_t _Max) {
     }
 
     dynidx_t indexes = dynidx_new();
-
-    // Counting the number of times old word occur in the string 
     result_t window = str_find(_Str, _Old, 0, _Str.length);
 
     size_t count = 0;
-    while(window.found && (count++ < _Max)) {
+    while(window.found && (count != _Max)) {
         dynidx_push(&indexes, window.index);
 
         window = str_find(_Str, _Old, window.index + _Old.length - 1, _Str.length);
+        count++;
+    }
+
+    if(count == 0) {
+        return str_new_s(cstr_new_s(_Str.buffer, _Str.length), _Str.length);
     }
 
     size_t length = _Str.length + count * (_New.length - _Old.length);
     cstr_t buffer = cstr_alloc(length);
 
-    size_t x;
-    size_t y = 0;
+    size_t idx;
+    size_t strdst;
+    size_t bufptr = 0;
+    size_t strptr = 0;
 
-    for(size_t i = 0; i < indexes.endptr; i++) {
-        x = indexes.block[i];
+    for (size_t i = 0; i < indexes.endptr; i++) {
+        idx = indexes.block[i];
+        strdst = idx - strptr;
 
-        strncpy(buffer + y + _New.length, _Str.buffer, x - y);
-        strncpy(buffer + x, _New.buffer, _New.length);
+        strncpy(buffer + bufptr, _Str.buffer + strptr, strdst);
 
-        y += x;
+        bufptr += strdst;
+        strptr =  idx;
+
+        strncpy(buffer + bufptr, _New.buffer, _New.length);
+
+        bufptr += _New.length;
+        strptr += _Old.length;
     }
+
+    strncpy(buffer + bufptr, _Str.buffer + strptr, _Str.length - strptr);
 
     dynidx_free(&indexes);
 
     return str_new_s(buffer, length);
-    /*
-    for(i = 0; i < _Str.length; i++) { 
-        c = _Str.buffer[i];
-
-        if(strstr(&c, _Old.buffer) == &c) { 
-            x++; 
- 
-            // Jumping to index after the old word.
-            i += _Old.length - 1;
-        } 
-    }
- 
-    // Making new string of enough length
-    length = i + x * (_New.length - _Old.length);
-    buffer = cstr_alloc(length);
-
-    if(buffer == NULL) {
-        return str_null();
-    }
-
-    // TODO: Use str_find
-
-    result_t window = str_find(_Str, _Old, 0, _Str.length);
-    string_t slice;
-    
-    i = 0;
-    size_t b = 0;
-
-    while(window.found) {
-        slice = str_slice(_Str, i, window.index);
-        
-        strncpy(buffer + i, slice.buffer, slice.length);
-        strncpy(buffer + window.index, _New.buffer, _New.length);
-
-        str_free_if_not_null(slice);
-
-        i += window.index + _New.length;
-        window = str_find(_Str, _Old, window.index + _Old.length, _Str.length);
-
-        if(b == 3) {
-            break;
-        }
-
-        b++;
-    }
-
-    // If the distance from the index found and the end is greater than the size
-    // of Old word then we have reached the end.
-    return str_new_s(buffer, length);*/
 }
 
 string_t str_replace_all(string_t _Str, string_t _Old, string_t _New) {

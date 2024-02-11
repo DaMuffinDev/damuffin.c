@@ -26,6 +26,7 @@ _T(struct) _search_result {
 string_t str_null();
 string_t str_join(string_t, string_t);
 result_t str_find(string_t, string_t, size_t, size_t);
+dynidx_t str_findall(string_t, string_t, size_t, size_t);
 string_t str_index(string_t, size_t);
 string_t str_slice(string_t, size_t, size_t);
 string_t str_lstrip(string_t, string_t);

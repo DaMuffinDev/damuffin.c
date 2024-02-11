@@ -1,6 +1,8 @@
 # Custom
 cmake-*
 dump/
+build/
+debug/
 .idea/
 .vscode/
 *.exe
